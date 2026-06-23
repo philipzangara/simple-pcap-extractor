@@ -73,7 +73,11 @@ Connections are tracked as bidirectional. A packet from `A:1234 → B:80` and a 
 
 HTTP file extraction pulls response bodies from packets with an `HTTPResponse` layer. Files are identified by MIME type using magic bytes, not file extension. MD5 and SHA256 are computed for each extracted body.
 
-## Part of the Simple Tools Series
+## Sample Captures
+
+Test captures used during development came from the [Wireshark Sample Captures wiki](https://wiki.wireshark.org/SampleCaptures). The `http_with_jpegs.cap` file was used to validate HTTP file extraction.
+
+## Part of the Simple™ Tools Series
 
 - [Simple Phishing Analyzer](https://github.com/philipzangara/simple-phishing-analyzer)
 - [Simple IOC Lookup](https://github.com/philipzangara/simple-ioc-lookup)
