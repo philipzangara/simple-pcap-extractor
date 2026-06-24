@@ -1,8 +1,8 @@
 import hashlib
 import magic
 
-def normalize_connection_key(src_ip: int, src_port: int,
-                             dst_ip: int, dst_port: int) -> tuple:
+def normalize_connection_key(src_ip: str, src_port: int,
+                             dst_ip: str, dst_port: int) -> tuple:
     
     return tuple(sorted(((src_ip, src_port), (dst_ip, dst_port))))
 

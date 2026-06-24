@@ -1,2 +1,6 @@
-scapy
-python-magic
+scapy==2.7.0
+# Windows
+python-magic-bin==0.4.14
+
+# Linux/Mac
+# python-magic==0.4.27

@@ -21,17 +21,17 @@ A command-line tool for extracting network metadata and file artifacts from PCAP
 
 ```bash
 git clone https://github.com/philipzangara/simple-pcap-extractor
-
 cd simple-pcap-extractor
-python -m venv .venv
-
-# Windows
-.venv\Scripts\Activate.ps1
-
-# Linux/Mac
-source .venv/bin/activate
-
 pip install -r requirements.txt
+```
+
+Note: `requirements.txt` uses `python-magic-bin` which is Windows only. Linux/Mac users should install `python-magic` instead.
+
+## Running Tests
+
+```bash
+pip install -r requirements-dev.txt
+python -m pytest tests/
 ```
 
 ## Usage
@@ -45,6 +45,10 @@ python simple_pcap_extractor.py capture.pcap --output json
 ```
 
 Supports `.pcap` and `.cap` files.
+
+## Screenshot
+
+![Terminal Output](assets/screenshot.png)
 
 ## Output
 
@@ -61,7 +65,10 @@ simple-pcap-extractor/
 ├── analysis_result.py        # Data container and JSON serialization
 ├── display.py                # Terminal output formatting
 ├── helpers.py                # Hashing, file type detection, connection key normalization
+├── tests/
+│   └── test_helpers.py       # Unit tests for helper functions
 ├── requirements.txt
+├── requirements-dev.txt
 └── README.md
 ```
 
@@ -77,9 +84,13 @@ HTTP file extraction pulls response bodies from packets with an `HTTPResponse` l
 
 Test captures used during development came from the [Wireshark Sample Captures wiki](https://wiki.wireshark.org/SampleCaptures). The `http_with_jpegs.cap` file was used to validate HTTP file extraction.
 
-## Part of the Simple™ Tools Series
+## Part of the Simple Tools Series
 
 - [Simple Phishing Analyzer](https://github.com/philipzangara/simple-phishing-analyzer)
 - [Simple IOC Lookup](https://github.com/philipzangara/simple-ioc-lookup)
 - [Simple Log Parser](https://github.com/philipzangara/simple-log-parser)
 - Simple PCAP Extractor
+
+## Disclaimer
+
+Built independently, with AI used as a learning aid for guidance and debugging feedback.
