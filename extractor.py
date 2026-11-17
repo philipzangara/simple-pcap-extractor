@@ -64,6 +64,9 @@ def extract(pcap_path: str) -> AnalysisResult:
             dst_port = packet[TCP].dport if packet.haslayer(TCP) else \
                        packet[UDP].dport if packet.haslayer(UDP) else None
             
+            if src_port is None or dst_port is None:
+                continue # this fixes mypy error
+            
             # Normalize to bidirectional key so A->B and B->A map to the same connection
             key = normalize_connection_key(src_ip, src_port, dst_ip, dst_port)
 
