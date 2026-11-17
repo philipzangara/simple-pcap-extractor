@@ -1,4 +1,5 @@
 # Simple PCAP Extractor
+[![Mypy](https://github.com/philipzangara/simple-pcap-extractor/actions/workflows/mypy.yml/badge.svg)](https://github.com/philipzangara/simple-pcap-extractor/actions/workflows/mypy.yml)
 
 A command-line tool for extracting network metadata and file artifacts from PCAP files. Built for SOC analysts who need quick visibility into capture files without opening Wireshark.
 
@@ -10,6 +11,8 @@ A command-line tool for extracting network metadata and file artifacts from PCAP
 - Top 10 connections ranked by bytes transferred
 - HTTP file extraction with MD5, SHA256, MIME type detection, and file size
 - Terminal and JSON output modes
+- Static type checking with MyPy
+- Automated CI validation with GitHub Actions
 
 ## Requirements
 
@@ -56,22 +59,6 @@ Supports `.pcap` and `.cap` files.
 
 **JSON mode** outputs a single object with the same data. Useful for piping into other tools or ingesting into a SIEM.
 
-## File Structure
-
-```
-simple-pcap-extractor/
-├── simple_pcap_extractor.py  # CLI entry point
-├── extractor.py              # Packet parsing and HTTP file extraction
-├── analysis_result.py        # Data container and JSON serialization
-├── display.py                # Terminal output formatting
-├── helpers.py                # Hashing, file type detection, connection key normalization
-├── tests/
-│   └── test_helpers.py       # Unit tests for helper functions
-├── requirements.txt
-├── requirements-dev.txt
-└── README.md
-```
-
 ## Design Notes
 
 Packets are processed one at a time using Scapy's `PcapReader`. This keeps memory usage flat regardless of file size.
@@ -84,6 +71,15 @@ HTTP file extraction pulls response bodies from packets with an `HTTPResponse` l
 
 Test captures used during development came from the [Wireshark Sample Captures wiki](https://wiki.wireshark.org/SampleCaptures). The `http_with_jpegs.cap` file was used to validate HTTP file extraction.
 
+## Engineering Practices
+
+This repository follows modern software engineering practices:
+
+- Static analysis with MyPy
+- Automated CI/CD with GitHub Actions
+- Type-safe connection normalization
+- Cross-platform dependency management
+
 ## Part of the Simple Tools Series
 
 - [Simple Phishing Analyzer](https://github.com/philipzangara/simple-phishing-analyzer)
@@ -91,6 +87,10 @@ Test captures used during development came from the [Wireshark Sample Captures w
 - [Simple Log Parser](https://github.com/philipzangara/simple-log-parser)
 - Simple PCAP Extractor
 
-## Disclaimer
+## Code Quality
 
-Built independently, with AI used as a learning aid for guidance and debugging feedback.
+This project uses automated quality controls:
+
+- MyPy static type checking
+- GitHub Actions continuous integration
+- Validation on every push and pull request
